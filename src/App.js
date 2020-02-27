@@ -31,18 +31,20 @@ function App() {
       <h1>TODO List</h1>
       <TodoInput AddTodo={AddTodo}></TodoInput>
 
-      {todos.map((todo, index) => {
-        return (
-          <Todo 
-            key={index.toString()} 
-            todo={todo} 
-            index={index} 
-            DeleteTodo={DeleteTodo}
-            CompleteTodo={CompleteTodo}
-            >
-          </Todo>
-        )
-      })}
+      <div className="todo-container">
+        {todos.map((todo, index) => {
+          return (
+            <Todo 
+              key={index.toString()} 
+              todo={todo} 
+              index={index} 
+              DeleteTodo={DeleteTodo}
+              CompleteTodo={CompleteTodo}
+              >
+            </Todo>
+          )
+        })}
+      </div>
     </div>
   );
 }
