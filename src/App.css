@@ -1,0 +1,13 @@
+body, html {
+  font-family: sans-serif;
+}
+
+.container {
+  padding: 4em;
+  text-align: center;
+}
+
+.todo {
+  border-radius: 5px;
+  border: 1px solid black;
+}
