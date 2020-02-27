@@ -13,6 +13,12 @@ function App() {
     setTodos(newTodos)
   }
 
+  function DeleteTodo(id){
+    const newTodos = [...todos]
+    newTodos.splice(id, 1)
+    setTodos(newTodos)
+  }
+
   return (
     <div className="container">
       <h1>TODO List</h1>
@@ -20,7 +26,7 @@ function App() {
 
       {todos.map((todo, index) => {
         return (
-          <Todo key={index.toString()} todo={todo}></Todo>
+          <Todo key={index.toString()} todo={todo} index={index} DeleteTodo={DeleteTodo}></Todo>
         )
       })}
     </div>
