@@ -9,7 +9,7 @@ function TodoInput({AddTodo}){
         <form
             onSubmit = {(e) => {
                 e.preventDefault()
-                AddTodo({task: todo, description:description})
+                AddTodo({task: todo, description:description, completed:false})
                 setTodo('')
                 setDescription('')
             }}
