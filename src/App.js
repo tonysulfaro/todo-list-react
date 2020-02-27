@@ -13,9 +13,9 @@ function App() {
     setTodos(newTodos)
   }
 
-  function DeleteTodo(id){
+  function DeleteTodo(index){
     const newTodos = [...todos]
-    newTodos.splice(id, 1)
+    newTodos.splice(index, 1)
     setTodos(newTodos)
   }
 
