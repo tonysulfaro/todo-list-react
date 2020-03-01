@@ -4,18 +4,22 @@ function Todo({todo, index, DeleteTodo, CompleteTodo}) {
     return (
         <div className="todo">
             <h2>{todo.task}</h2>
-            <p>{todo.description}</p>
-            <button
-                onClick={(e)=>{
-                    DeleteTodo(index)
-                }}
-            >Delete</button>
+            <p>{todo.description}
+                <button
+                    className="danger"
+                    onClick={()=>{
+                        DeleteTodo(index)
+                    }}
+                >Delete</button>
 
-            <button
-                onClick={(e)=>{
-                    CompleteTodo(index)
-                }}
-            >Complete</button>
+                <button
+                    className="primary"
+                    onClick={()=>{
+                        CompleteTodo(index)
+                    }}
+                >Complete</button>
+            </p>
+            
         </div>
     )
 }

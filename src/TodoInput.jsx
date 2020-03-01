@@ -28,7 +28,9 @@ function TodoInput({AddTodo}){
                 setDescription(e.target.value)
             }}/>
 
-            <button type="submit">Add Todo</button>
+            <button 
+            className="secondary"
+            type="submit">Add Todo</button>
         </form>
     )
 }
