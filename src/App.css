@@ -33,11 +33,6 @@ form input,button {
   border-radius: 5px;
   border: 1px solid lightgray;
   background-color: lightgray;
-  transition: ease-in-out .2s;
-}
-
-.todo:hover {
-  transform: scale(1.01);
 }
 
 .todo button {
