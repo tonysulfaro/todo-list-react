@@ -22,9 +22,8 @@ function App() {
 
   function CompleteTodo(index){
     const newTodos = [...todos]
-    newTodos[index].completed = true
+    newTodos[index].completed = !newTodos[index].completed
     setTodos(newTodos)
-    alert(todos[index].task + ' completed')
   }
 
   return (
