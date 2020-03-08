@@ -5,8 +5,8 @@ import TodoInput from './TodoInput';
 
 function App() {
 
-  const [todos, setTodos] = useState([{task:"get groceries", description: "go to kroger to get a gallon of milk", completed:false},
-  {task:"clean driveway", description: "family is coming so it has to be clean", completed:false}])
+  const [todos, setTodos] = useState([{title:"get groceries", completed:false},
+  {title:"clean driveway", completed:false}])
   
   function AddTodo(todo){
     const newTodos = [...todos]
