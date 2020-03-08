@@ -43,6 +43,10 @@ form input,button {
   border-radius: 5px;
 }
 
+.todo-actions {
+  display: flex;
+}
+
 .primary {
   background-color: #66bb6a;
 }

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 
-function TodoInput({AddTodo}){
+function TodoInput({AddTodo, getTodos}){
 
     const [todo, setTodo] = useState('')
 
     return (
-        <form
+        <div className="todo-actions">
+            <form
             onSubmit = {(e) => {
                 e.preventDefault()
                 AddTodo({task: todo, completed:false})
@@ -20,9 +21,20 @@ function TodoInput({AddTodo}){
             }}/>
 
             <button 
-            className="secondary"
-            type="submit">Add Todo</button>
+                className="secondary"
+                type="submit">Add Todo
+            </button>
         </form>
+
+        {/* <button 
+            className="secondary"
+            type="submit"
+            onClick = {() => {
+                getTodos()
+            }}
+            >Get Todos
+        </button> */}
+        </div>
     )
 }
 

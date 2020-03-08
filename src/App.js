@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Todo from './Todo';
 import TodoInput from './TodoInput';
+import endpoints from './Endpoints'
 
 function App() {
 
@@ -26,10 +27,18 @@ function App() {
     setTodos(newTodos)
   }
 
+  async function getTodos(){
+    const todoResponse = await fetch(endpoints.todos)
+    const todoJSON = await todoResponse.json()
+  }
+
   return (
     <div className="container">
       <h1>TODO List</h1>
-      <TodoInput AddTodo={AddTodo}></TodoInput>
+      <TodoInput 
+        AddTodo={AddTodo}
+        getTodos={getTodos}
+      ></TodoInput>
 
       <div className="todo-container">
         {todos.map((todo, index) => {
