@@ -1,5 +1,5 @@
 let endpoints = {
-  todos: "https://tdapis.herokuapp.com/todos"
-};
+  todos: 'https://tdapis.herokuapp.com/todos'
+}
 
-export default endpoints;
+export default endpoints

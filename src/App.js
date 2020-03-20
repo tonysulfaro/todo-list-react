@@ -1,39 +1,57 @@
-import React, { useState } from "react";
-import "./App.css";
-import Todo from "./Todo";
-import TodoInput from "./TodoInput";
-import endpoints from "./Endpoints";
+import React, { useState } from 'react'
+import './App.css'
+import Todo from './Todo'
+import TodoInput from './TodoInput'
+import endpoints from './Endpoints'
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState([])
 
-  function AddTodo(todo) {
-    const newTodos = [...todos];
-    newTodos.push(todo);
-    setTodos(newTodos);
+  async function AddTodo(todo) {
+    // push new todo to endpoint
+    const response = await fetch(endpoints.todos, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(todo)
+    })
+
+    if (response.ok) {
+      const newTodos = [...todos]
+      newTodos.push(todo)
+      setTodos(newTodos)
+    } else {
+      alert('failed to POST todo to backend')
+    }
   }
 
-  function DeleteTodo(index) {
-    const newTodos = [...todos];
-    newTodos.splice(index, 1);
-    setTodos(newTodos);
+  async function DeleteTodo(id) {
+    const response = await fetch(endpoints.todos + '/' + id, {
+      method: 'DELETE'
+    })
+
+    if (!response.ok) {
+      getTodos()
+    }
   }
 
   function CompleteTodo(index) {
-    const newTodos = [...todos];
-    newTodos[index].completed = !newTodos[index].completed;
-    setTodos(newTodos);
+    const newTodos = [...todos]
+    newTodos[index].completed = !newTodos[index].completed
+    setTodos(newTodos)
   }
 
-  async function getTodos() {
-    const todoResponse = await fetch(endpoints.todos);
-    const todoJSON = await todoResponse.json();
-    console.log(todoJSON);
-    setTodos(todoJSON);
+  const getTodos = async () => {
+    const todoResponse = await fetch(endpoints.todos)
+    const todoJSON = await todoResponse.json()
+    console.log(todoJSON)
+    setTodos(todoJSON)
   }
 
-  if (todos == "") {
-    getTodos();
+  if (todos == '') {
+    getTodos()
   }
 
   return (
@@ -45,17 +63,17 @@ function App() {
         {todos.map((todo, index) => {
           return (
             <Todo
-              key={index.toString()}
+              key={index}
               todo={todo}
-              index={index}
+              index={todo.id}
               DeleteTodo={DeleteTodo}
               CompleteTodo={CompleteTodo}
             ></Todo>
-          );
+          )
         })}
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
